@@ -1,11 +1,4 @@
-import { useState } from "react";
-import clear_icon from "./assets/clear.png"
-import cloud_icon from "./assets/cloud.png"
-import drizzle_icon from "./assets/drizzle.png"
-import humidity_icon from "./assets/humidity.png"
-import rain_icon from "./assets/rain.png"
-import snow_icon from "./assets/snow.png"
-import wind_icon from "./assets/wind.png"
+
 
 const API_KEY = "73f021a8262c3d559d57b043a121c417"
 
@@ -31,6 +24,18 @@ export const search = async () =>{
     humidity[0].innerHTML = data.main.humidity
     wind[0].innerHTML = data.wind.speed
     
+    let change_icon = data.weather[0].icon
+        if(change_icon==="01d" || change_icon==="01n"){
+            setWicon(clear_icon)
+        }else if(change_icon==="02d" || change_icon==="02n"){
+            setWicon(cloud_icon)
+        }else if(change_icon==="09d" || change_icon==="09n"){
+            setWicon(drizzle_icon)
+        }else if(change_icon==="10d" || change_icon==="10n"){
+            setWicon(rain_icon)
+        }else if(change_icon==="13d" || change_icon==="13n"){
+            setWicon(snow_icon)
+        }
     
 
 
